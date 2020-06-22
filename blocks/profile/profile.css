@@ -1,0 +1,37 @@
+/*стили профиля*/
+
+.profile {
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    max-width: 882px;
+    max-height: 120px;
+    margin: 40px auto;
+    position: relative;
+}
+
+@media screen and (max-width: 970px) and (min-width: 768px) {
+    .profile {
+        margin-left: 80px;
+        margin-right: 80px;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 767px){
+    .profile {
+        margin: 40px 19px;
+        display: block;
+        text-align: center;
+        max-width: 282px;
+        max-height: 286px;
+        margin: 40px auto;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .profile {
+        max-width: 282px;
+        max-height: 286px;
+        display: block;
+        text-align: center;
+    }
+}

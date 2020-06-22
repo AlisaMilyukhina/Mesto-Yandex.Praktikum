@@ -1,0 +1,15 @@
+.cards-grid__heart-btn {
+    width: 21px;
+    height: 19px;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    padding: 0;
+    -webkit-appearance: none;
+    overflow: hidden;
+    margin: 35px 19px;
+    background-image: url("../../../images/HeartVector.svg");
+    background-repeat: no-repeat;
+    border: none;
+    z-index: 100;
+}
