@@ -3,22 +3,21 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./styles/normalize.css">
-    <link rel="stylesheet" href="./styles/index.css">
-    <link rel="stylesheet" href="./fonts/fonts.css">
+    <link rel="stylesheet" href="./styles/index.css"> 
     <title>Mesto Russia</title>
 </head>
 <body class="page">
     <!--секция хедер-->
     <header class="header">
         <img class="header__logo" src="./images/mesto-russia__logo.svg" alt="Mesto Russia logo">
-        <line class="header__separation-line"></line>
+        <div class="header__separation-line"></div>
     </header>
     <!--секция профиля: аватарка, имя, био, кнопка редактирования-->
+    <main>
     <section class="profile">
-        <img class="profile__avatar" src="./images/Jacques-Yves_Cousteau__picture.jpg" alt="Фото профиля">
+        <img class="profile__avatar" src="./images/jacques-yves_cousteau__picture.jpg" alt="Фото профиля">
         <div class="profile__info">
-            <h2 class="profile__name">Жак-Ив Кусто</h2>
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
             <p class="profile__bio">Исследователь океана</p>
         </div>
         <button class="profile__edit-btn" value="edit-btn" type="button"></button>
@@ -27,48 +26,49 @@
     <!--сетка с карточками-->
     <section class="cards-grid">
         <div class="cards-grid__element"> <!--элемент это белый фон/контейнер-->
-            <img class="cards-grid__pic" src="./images/jeremy-bishop-LZykn1xi4ek-unsplash.jpg" alt="Морская черепаха в океане">
+            <img class="cards-grid__pic" src="./images/jeremy-bishop-unsplash.jpg" alt="Морская черепаха в океане">
             <div class="cards-grid__container">
                 <h3 class="cards-grid__title">Тихий океан</h3>
-                <button class="cards-grid__heart-btn"></button>
+                <button class="cards-grid__heart-btn" type="button" name="Like"></button>
             </div>
         </div>
         <div class="cards-grid__element">
             <img class="cards-grid__pic" src="./images/kirill-pershin-1088404-unsplash-1.jpg" alt="Шоанинский храм">
             <div class="cards-grid__container">
                 <h3 class="cards-grid__title">Карачаевск</h3>
-                <button class="cards-grid__heart-btn"></button>
+                <button class="cards-grid__heart-btn" type="button" name="Like"></button>
             </div>
         </div>
         <div class="cards-grid__element">
             <img class="cards-grid__pic" src="./images/kirill-pershin-1404681-unsplash-1.jpg" alt="Пустынная местность">
             <div class="cards-grid__container">
                 <h3 class="cards-grid__title">Гора Эльбрус</h3>
-                <button class="cards-grid__heart-btn"></button>
+                <button class="cards-grid__heart-btn" type="button" name="Like"></button>
             </div>
         </div>
         <div class="cards-grid__element">
             <img class="cards-grid__pic" src="./images/kirill-pershin-1556355-unsplash-1.jpg" alt="Горы">
             <div class="cards-grid__container">
                 <h3 class="cards-grid__title">Домбай</h3>
-                <button class="cards-grid__heart-btn"></button>
+                <button class="cards-grid__heart-btn" type="button" name="Like"></button>
             </div>
         </div>
         <div class="cards-grid__element">
-            <img class="cards-grid__pic" src="./images/neonbrand-C8HVCiuu8c0-unsplash.jpg" alt="Пустынные дюны">
+            <img class="cards-grid__pic" src="./images/neonbrand-unsplash.jpg" alt="Пустынные дюны">
             <div class="cards-grid__container">
                 <h3 class="cards-grid__title">Пустыня Мохаве</h3>
-                <button class="cards-grid__heart-btn"></button>
+                <button class="cards-grid__heart-btn" type="button" name="Like"></button>
             </div>
         </div>
         <div class="cards-grid__element">
-            <img class="cards-grid__pic" src="./images/sergei-akulich--heLWtuAN3c-unsplash.jpg" alt="Закат в лесу">
+            <img class="cards-grid__pic" src="./images/sergei-akulich-unsplash.jpg" alt="Закат в лесу">
             <div class="cards-grid__container">
                 <h3 class="cards-grid__title">Леса Швейцарии</h3>
-                <button class="cards-grid__heart-btn"></button>
+                <button class="cards-grid__heart-btn" type="button" name="Like"></button>
             </div>
         </div>
     </section>
+    </main>
     <!--секция подвала-->
     <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
@@ -77,10 +77,10 @@
     <section class="popup">
         <div class="popup__container">
             <button class="popup__close-icon" type="button"></button>
-            <form class="popup__form">
+            <form class="popup__form" name="Edit Profile">
                 <h3 class="popup__title">Редактирование профиля</h3>
-                <input class="popup__input popup__input_name" value="Жак-Ив Кусто" type="text">
-                <input class="popup__input popup__input_bio" value="Исследователь океана" type="text">
+                <input class="popup__input popup__input_name" value="Жак-Ив Кусто" name="Name" type="text">
+                <input class="popup__input popup__input_bio" value="Исследователь океана" name="Bio" type="text">
                 <button class="popup__btn" type="submit" value="save-btn">Сохранить</button>
             </form>
         </div>

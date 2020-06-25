@@ -1,3 +1,12 @@
+/*стили попапа*/
+@import url('../popup/_opened/popup_opened.css');
+@import url('../popup/__title/popup__title.css');
+@import url('../popup/__input/popup__input.css');
+@import url('../popup/__form/popup__form.css');
+@import url('../popup/__container/popup__container.css');
+@import url('../popup/__close-icon/popup__close-icon.css');
+@import url('../popup/__btn/popup__btn.css');
+
 /*попап*/
 .popup {
     width: 100%;

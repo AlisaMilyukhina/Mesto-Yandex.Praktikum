@@ -7,9 +7,14 @@
     padding: 0;
     -webkit-appearance: none;
     overflow: hidden;
-    margin: 35px 19px;
-    background-image: url("../../../images/HeartVector.svg");
+    margin: 35px 17px;
+    background-image: url("../../../images/heart-btn_vector.svg");
     background-repeat: no-repeat;
     border: none;
     z-index: 100;
+}
+
+.cards-grid__heart-btn:hover {
+    opacity: 0.6;
+    transition: ease-in-out 0.3s;
 }

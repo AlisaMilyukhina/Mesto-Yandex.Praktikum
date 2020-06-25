@@ -1,4 +1,8 @@
-/*стили для хедера*/
+/*стили элементов хедера*/
+@import url('../header/__logo/header__logo.css');
+@import url('../header/__separation-line/header__separation-line.css');
+
+/*хедер*/
 
 .header {
     max-width: 882px;

@@ -1,3 +1,10 @@
+/*стили элементов карточек*/
+@import url('../cards-grid/__container/cards-grid__container.css');
+@import url('../cards-grid/__element/cards-grid__element.css');
+@import url('../cards-grid/__heart-btn/cards-grid__heart-btn.css');
+@import url('../cards-grid/__pic/cards-grid__pic.css');
+@import url('../cards-grid/__title/cards-grid__title.css');
+
 /*карточки*/
 
 .cards-grid {

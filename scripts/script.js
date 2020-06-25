@@ -6,6 +6,7 @@ const popupCloseButton = popup.querySelector('.popup__close-icon')
 const submitButton = document.querySelector('.popup__btn')
 const nameInput = document.querySelector('.popup__input_name')
 const bioInput = document.querySelector('.popup__input_bio')
+const formElement = document.querySelector('.popup__form')
 
 let userName = document.querySelector('.profile__name')
 let userBio = document.querySelector('.profile__bio')
@@ -27,18 +28,7 @@ function formSubmitHandler (evt) {
     popupToggle();
 }
 
-function saveChanges() {
-  let profileInfo = document.querySelector('profile__info');
-  profileInfo.insertAdjacentHTML('afterbegin', 
-  `<div class="profile__info">
-    <h2 class="profile__name">${nameInput.value}</h2>
-    <p class="profile__bio">${bioInput.value}</p>
-</div>`);
-}
-
-const formElement = document.querySelector('.popup__form');
 formElement.addEventListener('submit', formSubmitHandler);
 
 popupOpenButton.addEventListener('click', popupToggle)
 popupCloseButton.addEventListener('click', popupToggle)
-submitButton.addEventListener('click', saveChanges)
