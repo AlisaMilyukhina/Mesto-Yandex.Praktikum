@@ -22,20 +22,10 @@
     }
 }
 
-@media screen and (min-width: 321px) and (max-width: 767px){
+@media screen and (min-width: 320px) and (max-width: 767px){
     .profile {
-        margin: 40px 19px;
         display: block;
         text-align: center;
         max-width: 282px;
-        margin: 40px auto;
-    }
-}
-
-@media screen and (max-width: 320px){
-    .profile {
-        max-width: 282px;
-        display: block;
-        text-align: center;
     }
 }
