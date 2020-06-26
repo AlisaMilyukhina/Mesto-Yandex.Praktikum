@@ -3,9 +3,10 @@
     width: 58px;
     height: 58px;
     margin-top: 148px;
-    background-image: url("../../../images/close_popup_icon.svg");
+    background-image: url("../../../images/close_icon.svg");
     background-color: transparent;
     background-position: center;
+    background-repeat: no-repeat;
     box-sizing: border-box;
     border: 0;
     cursor: pointer;

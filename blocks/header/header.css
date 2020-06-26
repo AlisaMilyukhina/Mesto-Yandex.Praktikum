@@ -1,12 +1,10 @@
 /*стили элементов хедера*/
 @import url('../header/__logo/header__logo.css');
-@import url('../header/__separation-line/header__separation-line.css');
 
 /*хедер*/
 
 .header {
     max-width: 882px;
-    max-height: 74px;
     margin: 45px auto 0;
     display: flex;
     flex-direction: column;
