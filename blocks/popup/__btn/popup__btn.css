@@ -22,8 +22,8 @@
 
 @media screen and (min-width: 320px) and (max-width: 500px) {
     .popup__btn {
-        width: 150px;
-        height: 30px;
-        font-size: 12px;
+        width: 80%;
+        font-size: 14px;
+        align-self: center;
     }
 }

@@ -24,61 +24,14 @@
     </section>
     <!--сетка с карточками-->
     <section class="cards-grid">
-        <div class="cards-grid__element"> <!--элемент это белый фон/контейнер-->
-            <button class="cards-grid__remove-btn"></button>
-            <img class="cards-grid__pic" src="./images/jeremy-bishop-unsplash.jpg" alt="Морская черепаха в океане">
-            <div class="cards-grid__container">
-                <h3 class="cards-grid__title">Тихий океан</h3>
-                <button class="cards-grid__heart-btn" type="button" name="Like"></button>
-            </div>
-        </div>
-        <div class="cards-grid__element">
-            <button class="cards-grid__remove-btn"></button>
-            <img class="cards-grid__pic" src="./images/kirill-pershin-1088404-unsplash-1.jpg" alt="Шоанинский храм">
-            <div class="cards-grid__container">
-                <h3 class="cards-grid__title">Карачаевск</h3>
-                <button class="cards-grid__heart-btn" type="button" name="Like"></button>
-            </div>
-        </div>
-        <div class="cards-grid__element">
-            <button class="cards-grid__remove-btn"></button>
-            <img class="cards-grid__pic" src="./images/kirill-pershin-1404681-unsplash-1.jpg" alt="Пустынная местность">
-            <div class="cards-grid__container">
-                <h3 class="cards-grid__title">Гора Эльбрус</h3>
-                <button class="cards-grid__heart-btn" type="button" name="Like"></button>
-            </div>
-        </div>
-        <div class="cards-grid__element">
-            <button class="cards-grid__remove-btn"></button>
-            <img class="cards-grid__pic" src="./images/kirill-pershin-1556355-unsplash-1.jpg" alt="Горы">
-            <div class="cards-grid__container">
-                <h3 class="cards-grid__title">Домбай</h3>
-                <button class="cards-grid__heart-btn" type="button" name="Like"></button>
-            </div>
-        </div>
-        <div class="cards-grid__element">
-            <button class="cards-grid__remove-btn"></button>
-            <img class="cards-grid__pic" src="./images/neonbrand-unsplash.jpg" alt="Пустынные дюны">
-            <div class="cards-grid__container">
-                <h3 class="cards-grid__title">Пустыня Мохаве</h3>
-                <button class="cards-grid__heart-btn" type="button" name="Like"></button>
-            </div>
-        </div>
-        <div class="cards-grid__element">
-            <button class="cards-grid__remove-btn"></button>
-            <img class="cards-grid__pic" src="./images/sergei-akulich-unsplash.jpg" alt="Закат в лесу">
-            <div class="cards-grid__container">
-                <h3 class="cards-grid__title">Леса Швейцарии</h3>
-                <button class="cards-grid__heart-btn" type="button" name="Like"></button>
-            </div>
-        </div>
+        
     </section>
     </main>
     <!--секция подвала-->
     <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <!--скрипт и разметка попапа-->
+    <!--попап редактирования профиля-->
     <section class="popup popup_edit-profile">
         <div class="popup__container">
             <button class="popup__close-icon" type="button"></button>
@@ -90,6 +43,7 @@
             </form>
         </div>
     </section>
+    <!--форма добавления новой карточки-->
     <section class="popup popup_add-new-item">
         <div class="popup__container">
             <button class="popup__close-icon popup__close-icon_add-new" type="button"></button>
@@ -101,6 +55,25 @@
             </form>
         </div>
     </section>
+    <!--секция лайтбокса-->
+    <section class="popup popup_lightbox">
+        <div class="popup__gallery">
+            <button class="popup__close-icon popup__close-icon_lightbox"></button>
+            <img class="popup__image" alt="Природа и окружающий мир" src="">
+            <p class="popup__caption"></p>
+        </div>
+    </section>
+    <!--образец карточки в сетке-->
+    <template class="cards-grid__template"> 
+        <div class="cards-grid__element">
+            <button class="cards-grid__remove-btn"></button>
+            <img class="cards-grid__pic" alt="Фото пользователя">
+            <div class="cards-grid__container">
+                <h3 class="cards-grid__title"></h3>
+                <button class="cards-grid__heart-btn" type="button" name="Like"></button>
+            </div>
+        </div>
+    </template>
     <script src="./scripts/script.js"></script>
 </body>
 </html>

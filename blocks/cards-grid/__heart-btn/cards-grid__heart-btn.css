@@ -6,12 +6,13 @@
     background-color: transparent;
     padding: 0;
     -webkit-appearance: none;
-    overflow: hidden;
-    margin: 35px 17px;
+    margin: 35px 17px 35px 0;
     background-image: url("../../../images/heart-btn_vector.svg");
     background-repeat: no-repeat;
     border: none;
     z-index: 100;
+    box-sizing: border-box;
+    z-index: 1000;
 }
 
 .cards-grid__heart-btn:hover {
