@@ -1,15 +1,4 @@
 /*normalize.css и шрифты*/
 @import url('../vendor/normalize.css');
 @import url('../fonts/fonts.css');
-/*page*/
-@import url('../blocks/page/page.css');
-/*header*/
-@import url('../blocks/header/header.css');
-/*профиль*/
-@import url('../blocks/profile/profile.css');
-/*cards-grid*/
-@import url('../blocks/cards-grid/cards-grid.css');
-/*popup*/
-@import url('../blocks/popup/popup.css');
-/*footer*/
-@import url('../blocks/footer/footer.css');
+@import url('../pages/main.css');

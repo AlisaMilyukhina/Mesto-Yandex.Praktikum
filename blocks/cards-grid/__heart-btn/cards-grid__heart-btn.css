@@ -10,9 +10,7 @@
     background-image: url("../../../images/heart-btn_vector.svg");
     background-repeat: no-repeat;
     border: none;
-    z-index: 100;
     box-sizing: border-box;
-    z-index: 1000;
 }
 
 .cards-grid__heart-btn:hover {
