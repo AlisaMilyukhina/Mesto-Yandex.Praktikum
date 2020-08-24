@@ -1,15 +1,26 @@
 .popup__close-icon_lightbox {
     align-self: flex-end;
+    height: 31px;
+    width: 31px;
     position: absolute;
-    top: 0;
-    margin: 0 50px;
+    top: -5px;
+    right: -5px;
+    margin: 0;
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 0;
+    background-image: url('../../../../images/close_icon.svg');
 }
 
 @media screen and (min-width: 320px) and (max-width: 500px){
     .popup__close-icon_lightbox {
+        height: 23px;
+        width: 23px;
         margin: 0 50px 0 0;
-        top: -40px;
-        right: -85px;
+        top: -31px;
+        right: -75px;
+        padding: 0;
         background-image: url('../../../../images/mobile_close_icon.svg');
     }
 }

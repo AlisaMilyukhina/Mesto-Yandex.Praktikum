@@ -12,6 +12,7 @@
     cursor: pointer;
     overflow: hidden;
     padding: 0;
+    position: relative;
 }
 
 .popup__close-icon:hover {

@@ -45,8 +45,8 @@ const bioInput = document.querySelector(".popup__input_bio");
 const formElement = document.querySelector(".popup__form");
 
 // имя и био пользователя
-let userName = document.querySelector(".profile__name");
-let userBio = document.querySelector(".profile__bio");
+const userName = document.querySelector(".profile__name");
+const userBio = document.querySelector(".profile__bio");
 
 //inputs
 const popupAddNewInputTitle = document.querySelector(".popup__input_title");
@@ -65,10 +65,11 @@ const lightboxTitle = document.querySelector(".popup__caption");
 const lightboxImage = document.querySelector(".popup__image");
 
 // загружаю первоначальные карточки
+const cardTemplate = document.querySelector(".cards-grid__template").content;
+const cardsGrid = document.querySelector(".cards-grid");
+
 const cardsOnSite = function (initialCards) {
-  const cardTemplate = document.querySelector(".cards-grid__template").content;
   const cardElement = cardTemplate.cloneNode(true);
-  const cardsGrid = document.querySelector(".cards-grid");
   cardElement.querySelector(".cards-grid__pic").src = initialCards.link;
   cardElement.querySelector(".cards-grid__pic").alt = initialCards.name;
   cardElement.querySelector(".cards-grid__title").textContent = initialCards.name;
@@ -78,6 +79,7 @@ const cardsOnSite = function (initialCards) {
 
   cardsGridAppear(cardElement);
   cardsGrid.prepend(cardElement);
+}
 
 // открываем лайтбокс
 
@@ -87,26 +89,28 @@ function toggleLightbox(lightbox){
 }
 // передаем данные картинок и описаний в попап
 
-function handleLightbox(){
-    const image = document.querySelector('.popup__image');
-    const caption = document.querySelector('.popup__caption');
-    image.src = initialCards.link;
-    caption.textContent = initialCards.name;
-    toggleLightbox(lightbox);
-}
+const image = document.querySelector('.popup__image');
+const caption = document.querySelector('.popup__caption');
+
+function handleLightbox(initialCards){
+  image.src = initialCards.link;
+  caption.textContent = initialCards.name;
+  toggleLightbox(lightbox);
+};
 
 // закрыть лайтбокс
 function closeLightbox(evt){
   lightbox.classList.remove('popup_opened');
-}
+};
 closeLightboxBtn.addEventListener("click", closeLightbox);
-}
+
 
 function appear(cards) {
   cards.forEach((cards) => {
     cardsOnSite(cards);
   });
 }
+
 appear(initialCards);
 
 // открытие попапа редактирования профиля
@@ -123,7 +127,7 @@ profilePopupOpenButton.addEventListener('click', (profilePopupToggle));
 
 // прописать эту функцию, чтобы она вызывала открытие
 // отправка, кнопки
-function formSubmitHandler(evt) {
+function formSubmitHandler(event) {
   evt.preventDefault();
     userName.textContent = nameInput.value;
     userBio.textContent = bioInput.value;
