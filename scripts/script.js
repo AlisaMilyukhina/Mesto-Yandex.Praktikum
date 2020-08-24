@@ -128,7 +128,7 @@ profilePopupOpenButton.addEventListener('click', (profilePopupToggle));
 // прописать эту функцию, чтобы она вызывала открытие
 // отправка, кнопки
 function formSubmitHandler(event) {
-  evt.preventDefault();
+  event.preventDefault();
     userName.textContent = nameInput.value;
     userBio.textContent = bioInput.value;
     profilePopupToggle();
