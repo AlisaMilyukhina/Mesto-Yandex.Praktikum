@@ -191,3 +191,20 @@ const handleFormSumbit = (event) => {
 };
 
 form.addEventListener("submit", handleFormSumbit, false); // вешаю на отправку формы свою функцию
+
+// ДОБАВИТЬ ЗАКРЫТИЕ ПОПАПОВ ПО ОВЕРЛЕЮ И ПО КНОПКЕ ESC
+
+
+
+function keyHandler(evt) {
+  if (evt.key === 'Esc'){
+    addNewItemPopupToggle();
+  }
+};
+
+popup.addEventListener('keydown', keyHandler, function(evt){
+  if(evt.key ==='Esc'){
+    addNewItemPopupToggle(form);
+    keyHandler();
+  }
+})
