@@ -218,6 +218,3 @@ togglePopups(addNewPopup); // закрываю попап при создани�
 };
 
 form.addEventListener("submit", handleFormSumbit, false); // вешаю на отправку формы свою функцию
-
-
-console.log(form.validity);
