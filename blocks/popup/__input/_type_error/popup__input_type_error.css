@@ -4,4 +4,5 @@
     opacity: 0;
     position: absolute;
     transition: 0.3s;
+    border-bottom-color: #FF0000;
 }

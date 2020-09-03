@@ -29,18 +29,21 @@
 @import url('../blocks/popup/_opened/popup_opened.css');
 @import url('../blocks/popup/__title/popup__title.css');
 @import url('../blocks/popup/__input/popup__input.css');
-@import url('../blocks/popup/__input/_type_error/popup__input_type_error.css');
-@import url('../blocks/popup/__error/_visible/popup__error_visible.css');
 @import url('../blocks/popup/__form/popup__form.css');
+@import url('../blocks/popup/__fieldset/popup__fieldset.css');
 @import url('../blocks/popup/__container/popup__container.css');
 @import url('../blocks/popup/__close-icon/popup__close-icon.css');
 @import url('../blocks/popup/__btn/popup__btn.css');
 @import url('../blocks/popup/__btn/_disabled/popup__btn_disabled.css');
+@import url('../blocks/popup/__input/_type_error/popup__input_type_error.css');
+@import url('../blocks/popup/__error/_visible/popup__error_visible.css');
 @import url('../blocks/popup/__caption/popup__caption.css');
 @import url('../blocks/popup/__image/popup__image.css');
 @import url('../blocks/popup/__gallery/popup__gallery.css');
 @import url('../blocks/popup/_lightbox/popup_lightbox.css');
 @import url('../blocks/popup/__close-icon/_lightbox/popup__close-icon_lightbox.css');
+@import url('../blocks/popup/__close-icon/_profile/popup__close-icon_profile.css');
+@import url('../blocks/popup/__close-icon/_add-new/popup__close-icon_add-new.css');
 /*footer*/
 @import url('../blocks/footer/footer.css');
 /*стили элементов подвала*/
