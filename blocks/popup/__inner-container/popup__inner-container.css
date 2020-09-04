@@ -3,4 +3,12 @@
     display: flex;
     flex-direction: column;
     margin: auto;
+    padding-bottom: 30px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 500px) {
+    .popup__inner-container{
+        width: 180px;
+        margin: 0;
+    }
 }
