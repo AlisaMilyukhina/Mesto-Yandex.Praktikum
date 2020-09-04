@@ -1,9 +1,8 @@
 .popup__btn_disabled {
     color: #000000;
     opacity: 0.2;
-    border-color:#000000;
     background-color: #FFFFFF;
-    border-radius: 2px;
+    border: black solid 1px;
     box-sizing: border-box;
     width: 358px;
     height: 50px;

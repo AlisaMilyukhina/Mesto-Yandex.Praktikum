@@ -1,11 +1,11 @@
 // элементы
 const formArray = {
   formElement: '.popup__form',
-  inputElement: 'popup__input', //classList
+  inputElement: '.popup__input',
   inputsErrorClass: 'popup__input_type_error', //classList
   errorVisible: 'popup__error_visible', //classList
   buttonElement: '.popup__btn',
-  buttonElementDisabled: '.popup__btn_disabled' //classList
+  buttonElementDisabled: 'popup__btn_disabled'
 }
 
 function showInputError(formElement, inputElement, elementList){
