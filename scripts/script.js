@@ -44,7 +44,7 @@ const submitButton = document.querySelector(".popup__btn_save");
 // инпуты имени и био
 const nameInput = document.querySelector(".popup__input_name");
 const bioInput = document.querySelector(".popup__input_bio");
-const formElement = document.querySelector(".popup__form");
+const formElement = document.querySelector(".popup__form_edit-profile");
 
 // имя и био пользователя
 const userName = document.querySelector(".profile__name");
@@ -98,6 +98,7 @@ appear(initialCards);
 function togglePopups(param){
   if(!param.classList.contains('popup_opened'));
   param.classList.toggle('popup_opened');
+  profilePopupValue(profilePopup);
 }
 
 // слушатели этой функции:
@@ -155,9 +156,12 @@ closeLightboxBtn.addEventListener("click", closeLightbox);
 
 // открытие попапа редактирования профиля с актуальными данными
 function profilePopupValue(){
-  nameInput.value = userName.textContent;
-  bioInput.value = userBio.textContent;
+  if(profilePopup.classList.contains('popup_opened')){
+    nameInput.value = userName.textContent;
+    bioInput.value = userBio.textContent;
+  }
 }
+profilePopupValue(profilePopup);
 
 // отправка, кнопки
 function formSubmitHandler(event) {
@@ -167,12 +171,9 @@ event.preventDefault();
   togglePopups(profilePopup);
 };
 
-function closePopup(profilePopup) {
-popup.classList.remove("popup_opened");
-};
 
 formElement.addEventListener("submit", formSubmitHandler);
-popupCloseButton.addEventListener("click", closePopup);
+//popupCloseButton.addEventListener("click", closePopup);
 
 function addNewCardValue (){
     popupAddNewInputTitle.value = null;
