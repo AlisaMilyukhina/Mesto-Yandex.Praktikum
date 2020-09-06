@@ -74,11 +74,12 @@ function hasInvalidInput(inputList){
 function toggleButtonState(inputList, buttonElement, elementList) {
   if(hasInvalidInput(inputList)){
     buttonElement.classList.add(elementList.buttonElementDisabled);
-    buttonElement.setAttribute('disabled', 'disabled');
+    buttonElement.setAttribute('disabled', true);
   } else {
     buttonElement.classList.remove(elementList.buttonElementDisabled);
-    buttonElement.removeAttribute('disabled', 'disabled')
+    buttonElement.removeAttribute('disabled', true);
   }
 }
+
 
 enableValidation(formArray);

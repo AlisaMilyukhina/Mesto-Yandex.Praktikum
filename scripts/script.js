@@ -94,47 +94,45 @@ function appear(cards) {
 appear(initialCards);
   
 
-//открываем и закрываем оба попапа этой функцией
-function togglePopups(param){
-  if(!param.classList.contains('popup_opened'));
-  param.classList.toggle('popup_opened');
-  profilePopupValue(profilePopup);
+//открываем и закрываем попапы этими функциями (так же можно закрыть нажав на esc или оверлей)
+function openPopups(param){
+  document.addEventListener('keydown', function(evt){ 
+    if(evt.key === "Escape"){ 
+        param.classList.remove('popup_opened'); 
+      }});
+  param.addEventListener('click', function(evt){ 
+    evt.target.classList.remove('popup_opened'); 
+  });
+  param.classList.add('popup_opened');
 }
 
-// слушатели этой функции:
-// открываем попап редактирования профиля
-profilePopupOpenButton.addEventListener('click', function(){togglePopups(profilePopup)});
-popupCloseButton.addEventListener('click', function(){togglePopups(profilePopup)});
-// открываем попап добавления новых карточек с пустыми полями
-addNewCloseButton.addEventListener('click', function(){togglePopups(addNewPopup)});
-addNewItemButton.addEventListener('click', function(){togglePopups(addNewPopup);
-  popupAddNewInputTitle.value = null;
-  popupAddNewInputImgUrl.value = null;});
-
-// добавляем возможность закрыть любое окно нажав на esc
-
-function closePopupOnEsc(popup){
-  document.addEventListener('keydown', function(evt){
-    if(evt.key === "Escape"){
-        popup.classList.remove('popup_opened');
+function closePopups(param){
+  document.removeEventListener('keydown', function(evt){ 
+    if(evt.key === "Escape"){ 
+        param.classList.remove('popup_opened'); 
       }
-  });
-};
-
-closePopupOnEsc(profilePopup);
-closePopupOnEsc(addNewPopup);
-closePopupOnEsc(lightbox);
-
-// можно закрыть попап кликнув по оверлею
-function closePopupOnOverlay(popup){
-  popup.addEventListener('click', function(evt){
-    evt.target.classList.remove('popup_opened');
-  });
+    });
+    param.removeEventListener('click', function(evt){ 
+      evt.target.classList.remove('popup_opened'); 
+    })
+    param.classList.remove('popup_opened');
 }
 
-closePopupOnOverlay(profilePopup);
-closePopupOnOverlay(addNewPopup);
-closePopupOnOverlay(lightbox);
+
+// слушатели этих функций:
+// открываем и закрываем попап редактирования профиля
+profilePopupOpenButton.addEventListener('click', function(){
+  openPopups(profilePopup);
+  profilePopupValue(profilePopup);
+});
+popupCloseButton.addEventListener('click', function(){closePopups(profilePopup)});
+// открываем и закрываем попап добавления новых карточек с пустыми полями
+addNewCloseButton.addEventListener('click', function(){closePopups(addNewPopup)});
+addNewItemButton.addEventListener('click', function(){openPopups(addNewPopup);
+  addNewCardValue();
+});
+// закрываем лайтбокс:
+closeLightboxBtn.addEventListener('click', function(){closePopups(lightbox)});
 
 
 // передаем данные картинок и описаний в лайтбокс
@@ -144,15 +142,10 @@ const caption = document.querySelector('.popup__caption');
 // открываем его с нужной картинкой
 function handleLightbox(initialCards){
 image.src = initialCards.link;
+image.alt = initialCards.name;
 caption.textContent = initialCards.name;
-togglePopups(lightbox);
+openPopups(lightbox);
 };
-
-// закрываем лайтбокс 
-function closeLightbox(evt){
-lightbox.classList.remove('popup_opened');
-};
-closeLightboxBtn.addEventListener("click", closeLightbox);
 
 // открытие попапа редактирования профиля с актуальными данными
 function profilePopupValue(){
@@ -168,12 +161,11 @@ function formSubmitHandler(event) {
 event.preventDefault();
   userName.textContent = nameInput.value;
   userBio.textContent = bioInput.value;
-  togglePopups(profilePopup);
+  closePopups(profilePopup);
 };
 
 
 formElement.addEventListener("submit", formSubmitHandler);
-//popupCloseButton.addEventListener("click", closePopup);
 
 function addNewCardValue (){
     popupAddNewInputTitle.value = null;
@@ -191,7 +183,6 @@ card.remove();
 //лайк
 
 function pressLike(evt) {
-console.log(evt.target)
 const likeButton = evt.target;
 likeButton.classList.toggle('cards-grid__heart-btn_active');
 }
@@ -215,7 +206,7 @@ const link = currentForm.querySelector('[name="URL"]').value; // и с ссыл�
 
 cardsOnSite({ name, link }); // создаю карточку, передав в функцию имя и ссылку
 
-togglePopups(addNewPopup); // закрываю попап при создании карточки
+closePopups(addNewPopup); // закрываю попап при создании карточки
 };
 
 form.addEventListener("submit", handleFormSumbit, false); // вешаю на отправку формы свою функцию
