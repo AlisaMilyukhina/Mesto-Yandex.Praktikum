@@ -80,7 +80,7 @@ cardElement.querySelector(".cards-grid__title").textContent = initialCards.name;
 const cardImage = cardElement.querySelector('.cards-grid__pic');
 cardImage.addEventListener('click', () => handleLightbox(initialCards));
 
-cardsGridAppear(cardElement);
+showCardsGrid(cardElement);
 cardsGrid.prepend(cardElement);
 }
 
@@ -123,7 +123,7 @@ function closePopups(param){
 // открываем и закрываем попап редактирования профиля
 profilePopupOpenButton.addEventListener('click', function(){
   openPopups(profilePopup);
-  profilePopupValue(profilePopup);
+  addProfilePopupValue(profilePopup);
 });
 popupCloseButton.addEventListener('click', function(){closePopups(profilePopup)});
 // открываем и закрываем попап добавления новых карточек с пустыми полями
@@ -148,13 +148,13 @@ openPopups(lightbox);
 };
 
 // открытие попапа редактирования профиля с актуальными данными
-function profilePopupValue(){
+function addProfilePopupValue(){
   if(profilePopup.classList.contains('popup_opened')){
     nameInput.value = userName.textContent;
     bioInput.value = userBio.textContent;
   }
 }
-profilePopupValue(profilePopup);
+addProfilePopupValue(profilePopup);
 
 // отправка, кнопки
 function formSubmitHandler(event) {
@@ -189,7 +189,7 @@ const likeButton = evt.target;
 likeButton.classList.toggle('cards-grid__heart-btn_active');
 }
 
-function cardsGridAppear(cardElement) {
+function showCardsGrid(cardElement) {
   cardElement.querySelector(".cards-grid__remove-btn").addEventListener('click', removeCard);
   cardElement.querySelector(".cards-grid__heart-btn").addEventListener('click', pressLike);
 }
