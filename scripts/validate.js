@@ -37,19 +37,6 @@ function checkValidity(formElement, inputElement, elementList){
   }
 }
 
-// расставляем слушатели событий
-function setEventListeners(formElement, elementList){
-  const inputList = Array.from(formElement.querySelectorAll(elementList.inputElement));
-  const submitButton = formElement.querySelector(elementList.buttonElement);
-  toggleButtonState(inputList, submitButton, elementList);
-  inputList.forEach((inputElement) => {
-    console.log(inputElement);
-    inputElement.addEventListener('input', () => {
-      checkValidity(formElement, inputElement, elementList);
-      toggleButtonState(inputList, submitButton, elementList);
-    })
-  })
-}
 
 //включаем валидацию для всех форм
 function enableValidation(elementList){
@@ -62,6 +49,7 @@ function enableValidation(elementList){
     })
 }
 
+const inputList = Array.from(document.querySelectorAll(".popup__input"));
 
 //если есть ошибка
 function hasInvalidInput(inputList){
@@ -74,12 +62,24 @@ function hasInvalidInput(inputList){
 function toggleButtonState(inputList, buttonElement, elementList) {
   if(hasInvalidInput(inputList)){
     buttonElement.classList.add(elementList.buttonElementDisabled);
-    buttonElement.setAttribute('disabled', true);
+    buttonElement.setAttribute('disabled', 'disabled');
   } else {
     buttonElement.classList.remove(elementList.buttonElementDisabled);
-    buttonElement.removeAttribute('disabled', true);
+    buttonElement.removeAttribute('disabled', 'disabled');
   }
 }
 
+// расставляем слушатели событий
+function setEventListeners(formElement, elementList){
+  const inputList = Array.from(formElement.querySelectorAll(elementList.inputElement));
+  const submitButton = formElement.querySelector(elementList.buttonElement);
+  toggleButtonState(inputList, submitButton, elementList);
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', () => {
+      checkValidity(formElement, inputElement, elementList);
+      toggleButtonState(inputList, submitButton, elementList);
+    })
+  })
+}
 
 enableValidation(formArray);

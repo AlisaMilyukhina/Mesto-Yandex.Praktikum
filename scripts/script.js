@@ -101,7 +101,7 @@ function openPopups(param){
         param.classList.remove('popup_opened'); 
       }});
   param.addEventListener('click', function(evt){ 
-    evt.target.classList.remove('popup_opened'); 
+    evt.target.classList.remove('popup_opened');
   });
   param.classList.add('popup_opened');
 }
@@ -170,6 +170,8 @@ formElement.addEventListener("submit", formSubmitHandler);
 function addNewCardValue (){
     popupAddNewInputTitle.value = null;
     popupAddNewInputImgUrl.value = null;
+    saveNewItemButton.classList.add('popup__btn_disabled');
+    saveNewItemButton.setAttribute('disabled', 'disabled');
 };
 
 
