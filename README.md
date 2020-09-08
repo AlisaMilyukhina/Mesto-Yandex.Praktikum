@@ -17,7 +17,7 @@
 * [Ссылка на макет в Figma](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4)
 
 **Используемые технологии**
-* Файловая структура и овормление кода по методике БЭМ; HTML, CSS, JavaScript.
+* Файловая структура и оформление кода по методике БЭМ; HTML, CSS, JavaScript.
 
 **Проект выполнен Алисой Милюхиной**
 
