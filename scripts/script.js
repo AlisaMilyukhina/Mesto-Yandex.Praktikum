@@ -94,7 +94,7 @@ function appear(cards) {
 appear(initialCards);
   
 
-//открываем и закрываем попапы этими функциями (так же можно закрыть нажав на esc или оверлей)
+//открываем и закрываем попапы этими функциями, навешиваем и убираем слушатели событий закрытия по Esc и оверлею 
 function openPopups(param){
   document.addEventListener('keydown', closePopupOnEsc);
   param.addEventListener('click', closePopupOnOverlay);
