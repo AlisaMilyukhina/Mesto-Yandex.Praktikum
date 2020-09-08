@@ -96,25 +96,25 @@ appear(initialCards);
 
 //открываем и закрываем попапы этими функциями (так же можно закрыть нажав на esc или оверлей)
 function openPopups(param){
-  document.addEventListener('keydown', function(evt){ 
-    if(evt.key === "Escape"){ 
-        param.classList.remove('popup_opened'); 
-      }});
-  param.addEventListener('click', function(evt){ 
-    evt.target.classList.remove('popup_opened');
-  });
+  document.addEventListener('keydown', closePopupOnEsc);
+  param.addEventListener('click', closePopupOnOverlay);
   param.classList.add('popup_opened');
 }
 
+function closePopupOnEsc(evt){
+  const activePopup = document.querySelector('.popup_opened');
+  if(evt.key === "Escape"){
+    closePopups(activePopup);
+  }
+}
+
+function closePopupOnOverlay(evt){
+  evt.target.classList.remove('popup_opened')
+}
+
 function closePopups(param){
-  document.removeEventListener('keydown', function(evt){ 
-    if(evt.key === "Escape"){ 
-        param.classList.remove('popup_opened'); 
-      }
-    });
-    param.removeEventListener('click', function(evt){ 
-      evt.target.classList.remove('popup_opened'); 
-    })
+  document.removeEventListener('keydown', closePopupOnEsc);
+    param.removeEventListener('click', closePopupOnOverlay);
     param.classList.remove('popup_opened');
 }
 
