@@ -1,4 +1,7 @@
-// массив карточек
+import { Card } from './Card.js';
+import FormValidator from './FormValidator.js';
+
+//массив изначальных карточек
 const initialCards = [
   {
       name: "Архыз",
@@ -32,6 +35,8 @@ const initialCards = [
   },
 ];
 
+const cardsGrid = document.querySelector(".cards-grid"); //сетка в общей области видимости
+
 // основа попапов
 const popup = document.querySelector(".popup");
 
@@ -44,7 +49,6 @@ const submitButton = document.querySelector(".popup__btn_save");
 // инпуты имени и био
 const nameInput = document.querySelector(".popup__input_name");
 const bioInput = document.querySelector(".popup__input_bio");
-const formElement = document.querySelector(".popup__form_edit-profile");
 
 // имя и био пользователя
 const userName = document.querySelector(".profile__name");
@@ -61,45 +65,20 @@ const addNewCloseButton = addNewPopup.querySelector(".popup__close-icon_add-new"
 const saveNewItemButton = document.querySelector(".popup__btn_create");
 
 //лайтбокс
-const lightbox = document.querySelector(".popup_lightbox");
-const closeLightboxBtn = document.querySelector(".popup__close-icon_lightbox");
-const lightboxTitle = document.querySelector(".popup__caption");
-const lightboxImage = document.querySelector(".popup__image");
 
+export const closeLightboxBtn = document.querySelector(".popup__close-icon_lightbox");
+//const lightboxTitle = document.querySelector(".popup__caption");
+//const lightboxImage = document.querySelector(".popup__image");
+export  const lightbox = document.querySelector(".popup_lightbox");
 
-// загружаю первоначальные карточки
-const cardTemplate = document.querySelector(".cards-grid__template").content;
-const cardsGrid = document.querySelector(".cards-grid");
-
-const cardsOnSite = function (initialCards) {
-const cardElement = cardTemplate.cloneNode(true);
-cardElement.querySelector(".cards-grid__pic").src = initialCards.link;
-cardElement.querySelector(".cards-grid__pic").alt = initialCards.name;
-cardElement.querySelector(".cards-grid__title").textContent = initialCards.name;
-
-const cardImage = cardElement.querySelector('.cards-grid__pic');
-cardImage.addEventListener('click', () => handleLightbox(initialCards));
-
-showCardsGrid(cardElement);
-cardsGrid.prepend(cardElement);
-}
-
-//показываем карточки на сайте
-function appear(cards) {
-  cards.forEach((cards) => {
-    cardsOnSite(cards);
-  });
-}
-  
-appear(initialCards);
-  
-
-//открываем и закрываем попапы этими функциями, навешиваем и убираем слушатели событий закрытия по Esc и оверлею 
-function openPopups(param){
+//открываем попапы
+export  function openPopups(param){
   document.addEventListener('keydown', closePopupOnEsc);
   param.addEventListener('click', closePopupOnOverlay);
   param.classList.add('popup_opened');
-}
+};
+
+//закрываем попапы этими функциями, навешиваем и убираем слушатели событий закрытия по Esc и оверлею 
 
 function closePopupOnEsc(evt){
   const activePopup = document.querySelector('.popup_opened');
@@ -112,40 +91,32 @@ function closePopupOnOverlay(evt){
   evt.target.classList.remove('popup_opened')
 }
 
-function closePopups(param){
+//экспортирую эту функцию, чтобы в классе Card можно было закрывать попап лайтбокса
+export function closePopups(param){
   document.removeEventListener('keydown', closePopupOnEsc);
     param.removeEventListener('click', closePopupOnOverlay);
     param.classList.remove('popup_opened');
-}
-
+    new FormValidator(param).hideErrors();
+  }
 
 // слушатели этих функций:
 // открываем и закрываем попап редактирования профиля
-profilePopupOpenButton.addEventListener('click', function(){
+profilePopupOpenButton.addEventListener('click', () => {
   openPopups(profilePopup);
   addProfilePopupValue(profilePopup);
 });
-popupCloseButton.addEventListener('click', function(){closePopups(profilePopup)});
+popupCloseButton.addEventListener('click', function(){
+  closePopups(profilePopup)
+});
+
 // открываем и закрываем попап добавления новых карточек с пустыми полями
-addNewCloseButton.addEventListener('click', function(){closePopups(addNewPopup)});
-addNewItemButton.addEventListener('click', function(){openPopups(addNewPopup);
+addNewCloseButton.addEventListener('click', function(){
+  closePopups(addNewPopup);
+});
+addNewItemButton.addEventListener('click', () => {
+  openPopups(addNewPopup);
   addNewCardValue();
 });
-// закрываем лайтбокс:
-closeLightboxBtn.addEventListener('click', function(){closePopups(lightbox)});
-
-
-// передаем данные картинок и описаний в лайтбокс
-const image = document.querySelector('.popup__image');
-const caption = document.querySelector('.popup__caption');
-
-// открываем его с нужной картинкой
-function handleLightbox(initialCards){
-image.src = initialCards.link;
-image.alt = initialCards.name;
-caption.textContent = initialCards.name;
-openPopups(lightbox);
-};
 
 // открытие попапа редактирования профиля с актуальными данными
 function addProfilePopupValue(){
@@ -156,7 +127,8 @@ function addProfilePopupValue(){
 }
 addProfilePopupValue(profilePopup);
 
-// отправка, кнопки
+
+// отправка, отмена стандартного поведения
 function formSubmitHandler(event) {
 event.preventDefault();
   userName.textContent = nameInput.value;
@@ -164,9 +136,9 @@ event.preventDefault();
   closePopups(profilePopup);
 };
 
+profilePopup.addEventListener("submit", formSubmitHandler);
 
-formElement.addEventListener("submit", formSubmitHandler);
-
+//пустой попап
 function addNewCardValue (){
     popupAddNewInputTitle.value = null;
     popupAddNewInputImgUrl.value = null;
@@ -174,41 +146,43 @@ function addNewCardValue (){
     saveNewItemButton.setAttribute('disabled', 'disabled');
 };
 
+//из массива создаю существующие карточки с помощью нового метода createCard()
+initialCards.forEach((Element) => {
+  const card = new Card(Element, '.cards-grid__element');
+  cardsGrid.appendChild(card.createCard());
+})
 
-//удаление карточек 
+//новые карточки 
 
-function removeCard(evt) {
-const card = evt.target.closest(".cards-grid__element");
-card.remove();
-}
+const cardForm = document.querySelector(".popup__form_add-new-item"); //форма создания нового места
 
-//лайк
-
-function pressLike(evt) {
-const likeButton = evt.target;
-likeButton.classList.toggle('cards-grid__heart-btn_active');
-}
-
-function showCardsGrid(cardElement) {
-  cardElement.querySelector(".cards-grid__remove-btn").addEventListener('click', removeCard);
-  cardElement.querySelector(".cards-grid__heart-btn").addEventListener('click', pressLike);
-}
-
-// новые карточки 
-
-const form = document.querySelector(".popup__form_add-new-item");
-
-const handleFormSumbit = (event) => {
+const handleFormSumbit = (event) => { 
 event.preventDefault(); // отправка формы заблокирована
 
 const currentForm = event.target; // получаю форму
 
-const name = currentForm.querySelector('[name="Title"]').value; // забираю из нее поле с названием
-const link = currentForm.querySelector('[name="URL"]').value; // и с ссылкой
-
-cardsOnSite({ name, link }); // создаю карточку, передав в функцию имя и ссылку
-
+const data = {};
+data.link = currentForm.querySelector('[name="URL"]').value;  // забираю из нее поле с ссылкой
+data.name = currentForm.querySelector('[name="Title"]').value;//  и с названием
+const card = new Card(data, '.cards-grid__element'); //экземпляр
+cardsGrid.prepend(card.createCard(), cardsGrid.firstChild); //создаю карточку методом из класса Card
 closePopups(addNewPopup); // закрываю попап при создании карточки
 };
 
-form.addEventListener("submit", handleFormSumbit, false); // вешаю на отправку формы свою функцию
+cardForm.addEventListener('submit', handleFormSumbit); // вешаю на отправку формы свою функцию
+
+
+const formValidationSettings = {
+  inputSelector: '.popup__input',
+  errorVisible: 'popup__error_visible',
+  submitButtonSelector: '.popup__btn',
+  disabledButton: 'popup__btn_disabled',
+  inputsErrorClass: 'popup__input_type_error',
+  errorBorder: 'popup__input_invalid'
+}
+
+const formArray = Array.from(document.querySelectorAll('.popup__form'));
+
+formArray.forEach((formElement) => {
+  new FormValidator(formValidationSettings, formElement).enableValidation();
+});
