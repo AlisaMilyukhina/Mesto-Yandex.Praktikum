@@ -37,13 +37,10 @@ const initialCards = [
 
 const cardsGrid = document.querySelector(".cards-grid"); //сетка в общей области видимости
 
-// основа попапов
-const popup = document.querySelector(".popup");
-
 //попап редактирования профиля
 const profilePopup = document.querySelector(".popup_edit-profile");
 const profilePopupOpenButton = document.querySelector(".profile__edit-btn");
-const popupCloseButton = popup.querySelector(".popup__close-icon");
+const popupCloseButton = document.querySelector(".popup__close-icon");
 const submitButton = document.querySelector(".popup__btn_save");
 
 // инпуты имени и био
@@ -67,15 +64,21 @@ const saveNewItemButton = document.querySelector(".popup__btn_create");
 //лайтбокс
 
 export const closeLightboxBtn = document.querySelector(".popup__close-icon_lightbox");
-//const lightboxTitle = document.querySelector(".popup__caption");
-//const lightboxImage = document.querySelector(".popup__image");
 export  const lightbox = document.querySelector(".popup_lightbox");
+
+//основные функции добавления и удаления модификатора opened
+function showPopup(popup) {
+  popup.classList.add('popup_opened');
+}
+function hidePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
 
 //открываем попапы
 export  function openPopups(param){
   document.addEventListener('keydown', closePopupOnEsc);
   param.addEventListener('click', closePopupOnOverlay);
-  param.classList.add('popup_opened');
+  showPopup(param); 
 };
 
 //закрываем попапы этими функциями, навешиваем и убираем слушатели событий закрытия по Esc и оверлею 
@@ -88,14 +91,14 @@ function closePopupOnEsc(evt){
 }
 
 function closePopupOnOverlay(evt){
-  evt.target.classList.remove('popup_opened')
+  hidePopup(evt.target);
 }
 
 //экспортирую эту функцию, чтобы в классе Card можно было закрывать попап лайтбокса
 export function closePopups(param){
   document.removeEventListener('keydown', closePopupOnEsc);
     param.removeEventListener('click', closePopupOnOverlay);
-    param.classList.remove('popup_opened');
+    hidePopup(param);
     new FormValidator(param).hideErrors();
   }
 
