@@ -1,0 +1,19 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "social platform for sharing photos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlisaMilyukhina/mesto.git"
+  },
+  "author": "Alisa Milyukhina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlisaMilyukhina/mesto/issues"
+  },
+  "homepage": "https://github.com/AlisaMilyukhina/mesto#readme"
+}
